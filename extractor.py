@@ -1,5 +1,6 @@
 import sys
-file_name=sys.argv[1]
+import os
+
 
 '''
 input format:
@@ -173,7 +174,9 @@ class snake_graph_feature:
                     ret=density
         return ret
         
-
+'''
+#single file
+file_name=sys.argv[1]
 a=snake_graph_feature(file_name)
 #print(a.max_freedom())
 #print(a.min_freedom())
@@ -194,21 +197,23 @@ for f in feature_list:
 feature_v=feature_v[:-1]
 
 print(feature_v)
-#distance related
-
 
 '''
+folder_name=sys.argv[1]
+instfiles=os.listdir(folder_name)
+#print instfiles
+#exit()
 #deal with files
 feature_name='max_value,min_value,max_distance,min_distance,max_distance_x,\
 min_distance_x,max_distance_y,min_distance_y,is_all_one_side,\
 number_in_corner,max_freedom,max_freedom'
 feature_list=feature_name.split(',')
 
-with('feature.csv','w') as f:
-    f.write('inst,'+feature_name+'\n')
+with open('feature.csv','w') as f:
+    f.write('ins,'+feature_name+'\n')
 
-for file_name in files:
-    a=snake_graph_feature(file_name)
+for file_name in instfiles:
+    a=snake_graph_feature(folder_name+'/'+file_name)
 
     feature_v=''
     for f in feature_list:
@@ -218,7 +223,6 @@ for file_name in files:
         feature_v+=str(v)+","
     feature_v=feature_v[:-1]
 
-    inst_name=feature_name[:-3]
-    with('feature.csv','a') as f:
+    inst_name=file_name
+    with open('feature.csv','a') as f:
         f.write(inst_name+','+feature_v+'\n')
-'''
