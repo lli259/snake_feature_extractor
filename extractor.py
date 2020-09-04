@@ -182,7 +182,7 @@ a=snake_graph_feature(file_name)
 #print(a.min_freedom())
 feature_name='max_value,min_value,max_distance,min_distance,max_distance_x,\
 min_distance_x,max_distance_y,min_distance_y,is_all_one_side,\
-number_in_corner,max_freedom,max_freedom'
+number_in_corner,max_freedom,min_freedom'
 feature_list=feature_name.split(',')
 
 print(feature_name)
@@ -206,7 +206,7 @@ instfiles=os.listdir(folder_name)
 #deal with files
 feature_name='max_value,min_value,max_distance,min_distance,max_distance_x,\
 min_distance_x,max_distance_y,min_distance_y,is_all_one_side,\
-number_in_corner,max_freedom,max_freedom'
+number_in_corner,max_freedom,min_freedom'
 feature_list=feature_name.split(',')
 
 with open('feature.csv','w') as f:
